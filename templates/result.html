@@ -1,0 +1,30 @@
+<!-- result.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <h1>Result</h1>
+    <img src="{{ image_url }}" alt="Uploaded Image">
+    <p>The predicted weather class is: {{ prediction }}</p>
+    <p>Confidence levels:</p>
+    <ul>
+        <li>Sunrise: {{ confidence['Sunrise'] }}</li>
+        <li>Shine: {{ confidence['Shine'] }}</li>
+        <li>Rain: {{ confidence['Rain'] }}</li>
+        <li>Cloudy: {{ confidence['Cloudy'] }}</li>
+    </ul>
+
+    <!-- Form for uploading a new image -->
+    <form action="/predict" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" accept="image/*" required><br>
+        <input type="submit" value="Predict Again">
+    </form>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
